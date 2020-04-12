@@ -1,0 +1,29 @@
+<form action="/upload" method ="post" enctype="multipart/form-data">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="/stylesheets/drop.css" />
+
+<div class="container">
+  <h1>PhotoBook</h1>
+  <a href="">My Account | </a>  
+  <a href="/photo">My Photos | </a>  
+  <a href="/logout">Logout</a>  
+<div class="frame">
+	<div class="center">
+		<div class="title">
+			<h1>Drop Photo</h1>
+		</div>
+
+		<div class="dropzone">
+			<img src="images/upload.svg" class="upload-icon" />
+			<input type="file" id = "file" class="upload-input file" name = "image" accept="images/*" placeholder="none">
+
+		</div>
+
+        
+	</div>
+	<button class="btn">Upload Photo</button>
+</div>
+
+</div>
+</form>

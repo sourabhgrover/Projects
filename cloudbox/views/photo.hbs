@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="/stylesheets/photo.css" />
+
+<div class="container">
+    <h1 class="font-cinema">PhotoBook</h1>
+        <a href="/myaccount">My Account | </a>  
+        <a href="/upload">Upload Photos | </a>  
+        <a href="/logout">Logout</a>  
+</div>
+
+<div class="container">
+    <div class="row">
+        {{#each photos}}
+        <div class="card bg-white m-5 h-100 border-0" style="width: 250px">
+            <figure>
+                    <img class="card-img-top beerimage card-img-left zoom" src={{this.imgPath}} alt="" class="img-fluid">
+                <div class="card-header border-0 bg-dark text-light text-small" align="center">
+                    <div class="bg-dark" align="center">
+                        <a href="{{this.imgPath}}" download="{{this.originalname}}">
+                        <button class="btn"><i class="fa fa-download"></i></button></a>
+                        <button class="btn"><i class="fa fa-copy"></i></button>
+                        <button class="btn"><i class="fa fa-trash"></i></button>
+                    </div>
+                </div>
+        </div>
+        </figure>
+
+        {{/each}}
+    </div>
+</div>

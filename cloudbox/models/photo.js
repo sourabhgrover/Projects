@@ -7,7 +7,8 @@ const photoSchema = new Schema({
     filename: String,
     imgName: String, 
     imgPath: String,
-    username: String,
+    user: String,
+    category: String,
     size: Number
 }, {
     timestamps: {

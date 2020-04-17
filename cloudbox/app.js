@@ -138,14 +138,14 @@ passport.use(
       // to see the structure of the data in received response:
       console.log("Google account details:", profile);
 
-      User.findOne({ googleID: profile.id })
+      User.findOne({ googleID: profile.email })
         .then(user => {
           if (user) {
             done(null, user);
             return;
           }
 
-          User.create({ googleID: profile.id })
+          User.create({ googleID: profile.emails.value })
             .then(newUser => {
               done(null, newUser);
             })
@@ -205,6 +205,8 @@ const uploader = new Multer({
       imgPath: req.file.location,
       size: req.file.size,
     })
+
+
     .catch(err => console.log(err))
     res.redirect('photo')
   })

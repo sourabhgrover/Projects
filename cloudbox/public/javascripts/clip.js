@@ -1,17 +1,26 @@
-var copyTextareaBtn = document.querySelector('.copybtn');
-console.log(copyTextareaBtn)
+var copyTextareaBtn = document.querySelector("#copyButton");
+console.log(copyTextareaBtn);
 
-copyTextareaBtn.addEventListener('click', function(event) {
-  var copyTextarea = document.querySelector('.copytextarea');
-  console.log(copyTextarea)
-  copyTextarea.focus();
-  copyTextarea.select();
 
-  try {
-    var successful = document.execCommand('copy');
-    var msg = successful ? 'successful' : 'unsuccessful';
-    console.log('Copying text command was ' + msg);
-  } catch (err) {
-    console.log('Oops, unable to copy');
+for (var i=0, max =copyTextareaBtn.clientHeight; i<max; i++){
+  copyTextareaBtn.addEventListener("click", copyLink, false)
+}
+
+
+function copyLink(e){
+  if (e.target !== e.currentTarget) {
+    var copyTextarea = document.querySelector(".copytextarea");
+    console.log(copyTextarea);
+    copyTextarea.focus();
+    copyTextarea.select();
+    try {
+      var successful = document.execCommand("copy");
+      var msg = successful ? "successful" : "unsuccessful";
+      console.log("Copying text command was " + msg);
+    } catch (err) {
+      console.log("Oops, unable to copy");
+    }
   }
-});
+  e.stopPropagation;
+}
+

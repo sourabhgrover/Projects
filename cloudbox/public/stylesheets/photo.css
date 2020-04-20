@@ -5,7 +5,7 @@
   }
 
   /* Style buttons */
-.btn {
+.cbtn {
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 12px 16px; /* Some padding */
@@ -38,4 +38,30 @@
 
 #photolink {
   display: none;
+}
+
+
+@media (max-width: 400px) {
+  .fbtn .filter {
+  padding-left: 1.1rem;
+  padding-right: 1.1rem;
+  }
+  }
+
+
+
+  
+.border-3 {
+    border-width:3px !important;
+}
+
+.fbutton{
+  margin-top: 55px;
+  margin-bottom: 55px;
+}
+
+
+.navbar-items{
+  float: left;
+  align: right;
 }

@@ -123,15 +123,28 @@ router.get('/upload', ensureLogin.ensureLoggedIn(), (req,res) => {
 
 //route to display all photos stored in the S3 Bucket
 
-//Route for displaying all movies in the database
+//Route for displaying all photos in the database
 router.get('/photo', (req,res,next) => {
-    Photo.find()
+    Photo.find({user: req.user._id})
       .then(photos => {
         console.log('photos: ' ,photos)
         res.render('photo', {photos: photos})
     })
     .catch(error => {
       console.log('Error while getting the Photos from the DB: ', error);
+    })
+  });
+
+
+//Route to Display all details of the user
+router.get('/myaccount', (req,res,next) => {
+    User.find({_id: req.user._id})
+      .then(user => {
+        console.log('user: ' ,user)
+        res.render('myaccount', {user: user})
+    })
+    .catch(error => {
+      console.log('Error while getting the Details of users: ', error);
     })
   });
 

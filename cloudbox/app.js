@@ -138,14 +138,19 @@ passport.use(
       // to see the structure of the data in received response:
       console.log("Google account details:", profile);
 
-      User.findOne({ googleID: profile.email })
+      User.findOne({ googleID: profile.id })
         .then(user => {
           if (user) {
             done(null, user);
             return;
           }
 
-          User.create({ googleID: profile.emails.value })
+          User.create({ 
+            googleID: profile.id,
+            username: profile.emails[0].value,
+            displayName: profile.displayName,
+            photo: profile.photos[0].value
+          })
             .then(newUser => {
               done(null, newUser);
             })
@@ -169,7 +174,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'PhotoBook';
+app.locals.title = 'CloudBox';
 
 const Multer    = require('multer')
 const aws       = require('aws-sdk')
@@ -204,6 +209,7 @@ const uploader = new Multer({
       filename: req.file.originalname,
       imgPath: req.file.location,
       size: req.file.size,
+      user: req.user._id
     })
 
 

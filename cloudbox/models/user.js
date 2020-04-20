@@ -8,7 +8,8 @@ const userSchema = new Schema ({
     email:      String, 
     slackID:    String,
     googleID:   String,
-    displayName: String
+    displayName: String,
+    photo:       String
 },
 {
     timestamps: {

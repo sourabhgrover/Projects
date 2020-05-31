@@ -1,0 +1,204 @@
+
+.level .app-name{
+  background-color: #990000;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  margin-left: 1%;
+  font-family: Trebuchet MS;
+}
+
+.App-header {
+  background-color: #990000;
+  min-height: px;
+  flex-direction: row;
+  font-size: calc(10px + 2vmin);
+}
+
+.card-content .media .media-content .news-title{
+  font-family: 'Roboto,RobotoDraft,Helvetica,Arial,sans-serif';
+  font-size: 15px;
+ 
+}
+
+.div-news-cards{
+  padding-left: 11%;
+}
+
+.search-bar {
+  position: absolute;
+  top: 70px;
+  left:15px
+
+}
+
+input.input.search-bar{
+  height: 50%;
+  width: 10%;
+}
+
+
+
+.short-app-name { display: none; }
+.smallClock {display: none;}
+
+/* Clock Component */
+
+.clock{
+  background-color: #990000;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 1%;
+  font-size: 15px;
+  font-family: Trebuchet MS;
+  font-weight: bold;
+  color: white;
+}
+
+.read-more{
+  width: 200px;
+  margin-top: 45px;
+}
+
+.news-date{
+  position: float;
+  display: flex;
+  flex-direction: row;
+  font-style: italic;
+}
+
+
+.tile .div-img{
+  flex-direction: row;
+  width: 50%;
+  padding: 0 0 0 0 ;
+
+}
+
+.columns.div-news-cards{
+  height: 20px;
+  margin-bottom: 100px;
+  float: right;
+  margin-right: 10px;
+  margin-left: 70px;
+}
+
+
+.tile .div-news {
+  flex-direction: row;
+  padding-top: 5%;
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+
+.imgscale{
+  width:50%;
+  height: auto;
+  padding-left: 5%;
+}
+
+.beers {
+  width: 100%;
+  max-height:250px;
+  margin-top: 0px;
+}
+
+
+.card{
+  width: 400px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-bottom: 5px;
+  margin-top: 50px;
+  font-family: 'Roboto,RobotoDraft,Helvetica,Arial,sans-serif';
+  font-size: small;
+}
+
+
+.cardinput{
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin-left:40%;
+  margin-bottom: 0px;
+  margin-top: 50px;
+}
+
+.div-menu-item{
+  width: 120px;
+  margin-left: 20px;
+  float: left;
+  margin-right: 5px;
+  margin-top: 80px;
+
+}
+
+.vl {
+  border-left: 2px solid whitesmoke;
+  height: 44px;
+  position: absolute;
+  left: 16%;
+  margin-left: -3px;
+  top: 0;
+}
+
+.vl1 {
+  border-left: 2px solid whitesmoke;
+  height: 44px;
+  position: absolute;
+  left: 88%;
+  margin-left: -3px;
+  top: 0;
+}
+
+
+
+/* Media Query for Mobile and Tablet */
+@media screen and (max-width: 411px) {
+  .short-app-name { 
+    display: inline-block; 
+    background-color: #990000;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    margin-left: 1%;
+    font-family: Trebuchet MS;
+  }
+  .smallClock {
+    display: inline-block;
+    color: white;
+    font-family: Trebuchet MS;
+  }
+  
+  .app-name { display: none;}
+
+  .smallClock{
+    margin-left: 1%;
+  }
+  .clock{display: none;}
+
+  .search-bar {
+    position: absolute;
+    top: 5px;
+    left: 100px
+  }
+  input.input.search-bar{
+    height: 50%;
+    width: 50%;
+  }
+
+  .card{
+    margin-left: 0px;
+    margin-right: 50px;
+    width: 320px;
+    height: auto;
+  }
+  .div-menu-item{
+    display: none;
+
+  }
+  }
+
+

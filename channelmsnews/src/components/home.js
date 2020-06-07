@@ -5,10 +5,13 @@ export default function BreakingNews(props) {
   return (
     <div>
       <div className="columns is-multiline div-news-cards">
-        {props.breakingnews.map((news) => (
+        {props.news.map((news) => (
           <div className="card media-left is-0-mobile is-1-desktop">
             <div>
+              {news.urlToImage ?
               <img className="beers" src={news.urlToImage} alt="news"></img>
+              :<img className="beers" src="/images/default.png" alt="news"></img>
+            }
             </div>
             <div className="card-content">
               <div className="media">

@@ -12,9 +12,6 @@ export default function sidemenu() {
           <li>
             <a href="/">COVD-19</a>
           </li>
-          <li>
-            <a href="/">My Account</a>
-          </li>
         </ul>
         <p className="menu-label">Categories</p>
         <ul className="menu-list">
@@ -37,10 +34,10 @@ export default function sidemenu() {
         <p className="menu-label">Settings</p>
         <ul className="menu-list">
           <li>
-            <a href="/"> Language</a>
+            <a href="/"> Region</a>
           </li>
           <li>
-            <a href="/">Region</a>
+            <a href="/">My Account</a>
           </li>
           <li>
             <a href="/">Sign Out</a>

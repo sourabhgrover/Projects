@@ -1,68 +1,83 @@
 import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
+
 import "./App.css";
 import Clock from "./components/clock";
-import "bulma/css/bulma.css";
 import Date from "./components/date";
-import { Route, Switch } from "react-router-dom";
 import BreakingNews from "./components/home";
-import Search from "./components/search";
-import SideMenu from './components/sidemenu';
+import Search from "./components/Search";
+import SideMenu from "./components/sidemenu";
+import newsApi from "./apis/newsApi";
+import Weather from "./components/defaultWeather";
 
+import "bulma/css/bulma.css";
 
 
 export default class App extends Component {
   state = {
-    breakingnews: [],
+    news: [],
   };
-
-  // handleSearchInput = (e) => {
-  //   let { name, value } = e.target;
-  //   const filteredResults = this.state.breakingnews.filter((f) =>
-  //     f.name.includes(value)
-  //   );
-  //   this.setState({
-  //     results: filteredResults,
-  //     searchText: value,
-  //   });
-  // };
 
   componentDidMount = () => {
-    fetch(
-      "https://newsapi.org/v2/top-headlines?country=US&pageSize=12&apiKey=8f47a48a41494480b72c7e5102db18ce"
-    )
-      .then((res) => res.json())
-      .then((result) => {
-        this.setState({ breakingnews: result.articles });
+    newsApi
+      .get(
+        "top-headlines?country=GB&pageSize=6&apiKey=8f47a48a41494480b72c7e5102db18ce"
+      )
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          this.setState({ news: response.data.articles });
+        }
       })
-      .catch((e) => console.log(e));
+      .catch((error) => console.log(error));
   };
+
+
+  userSearch = (userSearchInput) => {
+    newsApi
+      .get(
+        `everything?q=${userSearchInput}&sortBy=publishedAt&apiKey=8f47a48a41494480b72c7e5102db18ce`
+      )
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          this.setState({ news: response.data.articles });
+        }
+      })
+      .catch((error) => console.log(error));
+  }; 
+
   render() {
     return (
       <div>
         <div className="App-header">
           <div className="level">
             <div className="level-left app-name">CHANNEL MS NEWS</div>
-            <div class="vl"></div>
+            <div className="vl"></div>
             <div>
-              <span className="short-app-name">CMS NEWS</span>
+              <span className="short-app-name">CHANNEL MS NEWS</span>
+            </div>
+            <div className="weather">
+              <Weather />
             </div>
             <div className="level-right clock">
               <Clock />
             </div>
-            <div class="vl1"></div>
+            <div className="vl1"></div>
             <div className="smallClock">
               <Date />
             </div>
           </div>
         </div>
-        <Search />
+        <Search onSearchSubmit = {this.userSearch} />
         <Switch>
           <Route exact path="/">
-            <BreakingNews breakingnews={this.state.breakingnews} />
+            <BreakingNews news={this.state.news} />
           </Route>
         </Switch>
-        <div><SideMenu /></div>
-
+        <div>
+          <SideMenu />
+        </div>
       </div>
     );
   }

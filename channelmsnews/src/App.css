@@ -1,5 +1,4 @@
-
-.level .app-name{
+.level .app-name {
   background-color: #990000;
   font-size: 30px;
   color: white;
@@ -15,36 +14,36 @@
   font-size: calc(10px + 2vmin);
 }
 
-.card-content .media .media-content .news-title{
-  font-family: 'Roboto,RobotoDraft,Helvetica,Arial,sans-serif';
+.card-content .media .media-content .news-title {
+  font-family: "Roboto,RobotoDraft,Helvetica,Arial,sans-serif";
   font-size: 15px;
- 
 }
 
-.div-news-cards{
+.div-news-cards {
   padding-left: 11%;
 }
 
 .search-bar {
   position: absolute;
   top: 70px;
-  left:15px
-
+  left: 15px;
 }
 
-input.input.search-bar{
+input.input.search-bar {
   height: 50%;
   width: 10%;
 }
 
-
-
-.short-app-name { display: none; }
-.smallClock {display: none;}
+.short-app-name {
+  display: none;
+}
+.smallClock {
+  display: none;
+}
 
 /* Clock Component */
 
-.clock{
+.clock {
   background-color: #990000;
   display: flex;
   flex-direction: row-reverse;
@@ -55,34 +54,31 @@ input.input.search-bar{
   color: white;
 }
 
-.read-more{
+.read-more {
   width: 200px;
   margin-top: 45px;
 }
 
-.news-date{
+.news-date {
   position: float;
   display: flex;
   flex-direction: row;
   font-style: italic;
 }
 
-
-.tile .div-img{
+.tile .div-img {
   flex-direction: row;
   width: 50%;
-  padding: 0 0 0 0 ;
-
+  padding: 0 0 0 0;
 }
 
-.columns.div-news-cards{
+.columns.div-news-cards {
   height: 20px;
   margin-bottom: 100px;
   float: right;
   margin-right: 10px;
   margin-left: 70px;
 }
-
 
 .tile .div-news {
   flex-direction: row;
@@ -91,20 +87,19 @@ input.input.search-bar{
   margin-bottom: 10px;
 }
 
-.imgscale{
-  width:50%;
+.imgscale {
+  width: 50%;
   height: auto;
   padding-left: 5%;
 }
 
 .beers {
   width: 100%;
-  max-height:250px;
+  max-height: 250px;
   margin-top: 0px;
 }
 
-
-.card{
+.card {
   width: 400px;
   height: 420px;
   display: flex;
@@ -112,93 +107,169 @@ input.input.search-bar{
   margin-left: 50px;
   margin-bottom: 5px;
   margin-top: 50px;
-  font-family: 'Roboto,RobotoDraft,Helvetica,Arial,sans-serif';
+  font-family: "Roboto,RobotoDraft,Helvetica,Arial,sans-serif";
   font-size: small;
 }
 
-
-.cardinput{
+.cardinput {
   width: 300px;
   display: flex;
   flex-direction: column;
-  margin-left:40%;
+  margin-left: 40%;
   margin-bottom: 0px;
   margin-top: 50px;
 }
 
-.div-menu-item{
+.div-menu-item {
   width: 120px;
   margin-left: 20px;
   float: left;
   margin-right: 5px;
   margin-top: 80px;
-
 }
 
 .vl {
   border-left: 2px solid whitesmoke;
-  height: 44px;
+  height: 34px;
   position: absolute;
   left: 16%;
   margin-left: -3px;
-  top: 0;
+  top: 10;
 }
 
 .vl1 {
   border-left: 2px solid whitesmoke;
-  height: 44px;
+  height: 34px;
   position: absolute;
-  left: 88%;
+  left: 88.5%;
   margin-left: -3px;
-  top: 0;
+  top: 10;
 }
 
-
+.weather {
+  color: white;
+  position: absolute;
+  margin-left: -3px;
+  left: 80%;
+  font-size: 15px;
+  font-family: Trebuchet MS;
+  font-weight: bold;
+}
 
 /* Media Query for Mobile and Tablet */
 @media screen and (max-width: 411px) {
-  .short-app-name { 
-    display: inline-block; 
+  .weather {
+    color: white;
+    position: absolute;
+    margin-left: 25px;
+    margin-top: 5px;
+    left: 52%;
+    font-size: 15px;
+    font-family: Trebuchet MS;
+    font-weight: bold;
+  }
+
+  .short-app-name {
+    display: inline-block;
     background-color: #990000;
     font-size: 30px;
     color: white;
     font-weight: bold;
-    margin-left: 1%;
+    margin-left: 15%;
     font-family: Trebuchet MS;
+    margin-top: 10px;
   }
   .smallClock {
     display: inline-block;
     color: white;
     font-family: Trebuchet MS;
+    margin-left: 2%;
+    font-size: 15px;
+    font-weight: bold;
   }
-  
-  .app-name { display: none;}
 
-  .smallClock{
-    margin-left: 1%;
+  .app-name {
+    display: none;
   }
-  .clock{display: none;}
+
+  .clock {
+    display: none;
+  }
 
   .search-bar {
     position: absolute;
-    top: 5px;
-    left: 100px
+    top: 20px;
+    left: 100px;
   }
-  input.input.search-bar{
+  input.input.search-bar {
     height: 50%;
     width: 50%;
   }
 
-  .card{
+  .card {
     margin-left: 0px;
     margin-right: 50px;
     width: 320px;
     height: auto;
   }
-  .div-menu-item{
+  .div-menu-item {
     display: none;
-
   }
+  .vl {
+    border-left: 2px solid whitesmoke;
+    height: 34px;
+    position: absolute;
+    left: 16%;
+    margin-left: -3px;
+    top: 10;
   }
 
+  .vl1 {
+    display: none;
+  }
 
+  .vl {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .vl1 {
+    display: none;
+  }
+
+  .vl {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .vl1 {
+    border-left: 2px solid whitesmoke;
+    height: 34px;
+    position: absolute;
+    left: 16%;
+    margin-left: 62%;
+    top: 10;
+  }
+
+  .vl {
+    border-left: 2px solid whitesmoke;
+    height: 34px;
+    position: absolute;
+    left: 16%;
+    margin-left: 12%;
+    top: 10;
+  }
+
+  .weather {
+    color: white;
+    position: absolute;
+    margin-left: 25px;
+    margin-top: 5px;
+    left: 52%;
+    font-size: 15px;
+    font-family: Trebuchet MS;
+    font-weight: bold;
+  }
+}

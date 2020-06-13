@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 export default function sidemenu() {
   return (
@@ -7,37 +8,37 @@ export default function sidemenu() {
         <p className="menu-label">General</p>
         <ul className="menu-list">
           <li>
-            <a href="/">Top Stories</a>
+            <a href="/">Breaking News</a>
           </li>
           <li>
-            <a href="/">COVD-19</a>
+          <Link to ="/category/covd19">COVD-19</Link>
           </li>
         </ul>
         <p className="menu-label">Categories</p>
         <ul className="menu-list">
           <li>
-            <a href="/">Business</a>
+            <Link to ="/category/Business">Business</Link>
           </li>
           <li>
-            <a href="/">Sports</a>
+          <Link to ="/category/Sports">Sports</Link>
           </li>
           <li>
-            <a href="/">Technology</a>
+          <Link to ="/category/Technology">Technology</Link>
           </li>
           <li>
-            <a href="/">Science</a>
+          <Link to ="/category/Science">Science</Link>
           </li>
           <li>
-            <a href="/">Health</a>
+          <Link to ="/category/Health">Health</Link>
           </li>
         </ul>
         <p className="menu-label">Settings</p>
         <ul className="menu-list">
           <li>
-            <a href="/"> Region</a>
+          <Link to ="/Region">Region</Link>
           </li>
           <li>
-            <a href="/">My Account</a>
+          <Link to ="/myaccount">My Account</Link>
           </li>
           <li>
             <a href="/">Sign Out</a>

@@ -16,28 +16,34 @@ export default class Category extends React.Component {
   componentDidMount = () => {
     let categoryName = this.props.match.params.CategoryName;
     console.log("Component Mounted");
+    console.log(this.props.location.state);
+
+    // console.log(this.state);
     newsApi
       .get(
         `top-headlines?country=GB&category=${categoryName}&pageSize=12&apiKey=0a32e98f7f8a48a5a35b410b6339daab`
       )
       .then((response) => {
         if (response.status === 200) {
+          this.props.history.replace({
+            state: { fromDashboard: false }
+          });
           this.setState({ news: response.data.articles, didMount: true, updateChalu: false });
         }
       })
       .catch((error) => console.log(error));
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    // console.log(nextProps);
-    console.log('Current State', this.state);
-    console.log('Upcoming state', nextState);
-    if (nextState.updateChalu === false) {
-      return false;
-    }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   // console.log(nextProps);
+  //   console.log('Current State', this.state);
+  //   console.log('Upcoming state', nextState);
+  //   if (nextState.updateChalu === false) {
+  //     return false;
+  //   }
 
-    return true;
-  }
+  //   return true;
+  // }
 
   componentDidUpdate = (prevProps, prevState) => {
     let currCategory = this.props.match.params.CategoryName;
@@ -47,7 +53,7 @@ export default class Category extends React.Component {
     console.log("Component Updated");
     // console.log('Prev Props', prevProps);
     // console.log('Current Props', this.props);
-
+    console.log(this.props?.location?.state);
     // console.log('Prev State', prevState);
     // console.log('Current State', this.state);
 
@@ -58,20 +64,25 @@ export default class Category extends React.Component {
     // console.log("Current State:", this.state.news);
     // console.log("Previous State:", prevState.news);
     // if (this.state.didMount === false && this.state.didUpdate === false) {
-    newsApi
-      .get(
-        `top-headlines?country=GB&category=${currCategory}&pageSize=12&apiKey=0a32e98f7f8a48a5a35b410b6339daab`
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          if (!isEqual(this.state.news, response.data.articles)) {
-            // console.log("Second Result is same");
-            this.setState({ news: response.data.articles, callNewsApi: false, didUpdate: true });
+    if (this.props?.location?.state?.fromDashboard === true) {
+      console.log("comes here");
+      newsApi
+        .get(
+          `top-headlines?country=GB&category=${currCategory}&pageSize=12&apiKey=0a32e98f7f8a48a5a35b410b6339daab`
+        )
+        .then((response) => {
+          if (response.status === 200) {
+            if (!isEqual(this.state.news, response.data.articles)) {
+              // console.log("Second Result is same");
+              this.props.history.replace({
+                state: { fromDashboard: false }
+              });
+              this.setState({ news: response.data.articles, callNewsApi: false, didUpdate: true });
+            }
           }
-        }
-      })
-      .catch((error) => console.log(error));
-    // }
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   render() {

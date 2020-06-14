@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 
 import "./App.css";
 import Clock from "./components/clock";
@@ -48,6 +48,50 @@ export default class App extends Component {
       .catch((error) => console.log(error));
   };
 
+  // handleClick = (e) => {
+  //   e.preventDefault();
+  //   // console.log(e.target);
+  //   // console.log(e.target.getAttribute('href'));
+  //   // console.log(e.target.getAttribute('data-toSend'));
+  //   // // console.log(e.target.getAttribute('text'));
+  //   // console.log('The link was clicked.');
+  //   let categoryName = e.target.getAttribute('href');
+  //   newsApi
+  //     .get(
+  //       `top-headlines?country=GB&category=${categoryName}&pageSize=12&apiKey=0a32e98f7f8a48a5a35b410b6339daab`
+  //     )
+  //     .then((response) => {
+  //       if (response.status === 200) {
+  //         this.setState({ news: response.data.articles });
+  //       }
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
+
+  // handleeClick = (e) => {
+  //   e.preventDefault();
+  //   console.log("handleeClick");
+  //   console.log(e.target.getAttribute('href'));
+  // };
+
+  mereValaClick = (e) => {
+    e.preventDefault();
+
+    // console.log(e.target.getAttribute('href'));
+    // console.log("COmes here");
+    let categoryName = e.target.getAttribute('href');
+    newsApi
+      .get(
+        `top-headlines?country=GB&category=${categoryName}&pageSize=12&apiKey=0a32e98f7f8a48a5a35b410b6339daab`
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          this.setState({ news: response.data.articles });
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
   render() {
     return (
       <div>
@@ -80,7 +124,12 @@ export default class App extends Component {
           <Route path="/region" component={Region} />
         </Switch>
         <div>
-          <SideMenu />
+          {/* <SideMenu  /> */}
+          <SideMenu onMenuBarLinkClick={this.mereValaClick} />
+          {/* <Link to="Business" onClick={this.handleeClick}>Business</Link>
+          <a href="Business" onClick={this.handleClick}>
+            Click me
+        </a> */}
         </div>
       </div>
     );

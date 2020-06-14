@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function News(props) {
-  console.log(props);
   return (
     <div>
       <div className="columns is-multiline div-news-cards">
@@ -9,9 +8,9 @@ export default function News(props) {
           <div className="card media-left is-0-mobile is-1-desktop">
             <div>
               {news.urlToImage ?
-              <img className="beers" src={news.urlToImage} alt="news"></img>
-              :<img className="beers" src="/images/default.png" alt="news"></img>
-            }
+                <img className="beers" src={news.urlToImage} alt="news"></img>
+                : <img className="beers" src="/images/default.png" alt="news"></img>
+              }
             </div>
             <div className="card-content">
               <div className="media">
@@ -39,7 +38,7 @@ export default function News(props) {
           </div>
         ))}
       </div>
-      
+
     </div>
   );
 }

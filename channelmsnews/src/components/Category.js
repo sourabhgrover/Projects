@@ -1,74 +1,86 @@
 import React from "react";
+import isEqual from 'lodash/isEqual';
+
 import News from "./News";
 import newsApi from "../apis/newsApi";
 
-export default class Category extends React.PureComponent {
-                 state = {
-                   news: [],
-                 };
+export default class Category extends React.Component {
+  state = {
+    news: [],
+    callNewsApi: true,
+    didMount: false,
+    didUpdate: false,
+    updateChalu: true
+  };
 
-                 componentDidMount = () => {
-                   let categoryName = this.props.match.params.CategoryName;
-                   console.log("Component Mounted");
-                   newsApi
-                     .get(
-                       `top-headlines?country=GB&category=${categoryName}&pageSize=12&apiKey=0a32e98f7f8a48a5a35b410b6339daab`
-                     )
-                     .then((response) => {
-                       console.log(response);
-                       if (response.status === 200) {
-                         this.setState({ news: response.data.articles });
-                         console.log("State :", this.state.news[0].title);
-                       }
-                     })
-                     .catch((error) => console.log(error));
-                 };
+  componentDidMount = () => {
+    let categoryName = this.props.match.params.CategoryName;
+    console.log("Component Mounted");
+    newsApi
+      .get(
+        `top-headlines?country=GB&category=${categoryName}&pageSize=12&apiKey=0a32e98f7f8a48a5a35b410b6339daab`
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          this.setState({ news: response.data.articles, didMount: true, updateChalu: false });
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
-                 shouldComponentUpdate(nextProps, nextState) {
-                   console.log(nextProps);
-                   if (
-                     this.state?.news[0]?.title !== nextState?.news[0]?.title ||
-                     this.props.match.params.CategoryName !==
-                       nextProps.match.params.CategoryName
-                   ) {
-                     return true;
-                   }
-                   return false;
-                 }
+  shouldComponentUpdate(nextProps, nextState) {
+    // console.log(nextProps);
+    console.log('Current State', this.state);
+    console.log('Upcoming state', nextState);
+    if (nextState.updateChalu === false) {
+      return false;
+    }
 
-                 componentDidUpdate = (prevProps, prevState) => {
-                   let currCategory = this.props.match.params.CategoryName;
-                   let prevCategory = prevProps.match.params.CategoryName;
-                   console.log("Component Updated");
+    return true;
+  }
 
-                   // console.log("Current",currCategory )
-                   // console.log("Previous",prevCategory )
-                   // console.log("----------------------------")
-                   console.log("Current State:", this.state.news);
-                   console.log("Previous State:", prevState.news);
+  componentDidUpdate = (prevProps, prevState) => {
+    let currCategory = this.props.match.params.CategoryName;
+    let prevCategory = prevProps.match.params.CategoryName;
+    // this.setState({ callNewsApi: false })
+    console.log("=========");
+    console.log("Component Updated");
+    // console.log('Prev Props', prevProps);
+    // console.log('Current Props', this.props);
 
-                   newsApi
-                     .get(
-                       `top-headlines?country=GB&category=${currCategory}&pageSize=12&apiKey=0a32e98f7f8a48a5a35b410b6339daab`
-                     )
-                     .then((response) => {
-                       console.log(response);
-                       if (response.status === 200) {
-                         if (currCategory !== prevState.news) {
-                           this.setState({ news: response.data.articles });
-                         }
-                       }
-                     })
-                     .catch((error) => console.log(error));
-                 };
+    // console.log('Prev State', prevState);
+    // console.log('Current State', this.state);
 
-                 render() {
-                   // console.log(this.props)
 
-                   return (
-                     <div>
-                       <News news={this.state.news} />
-                     </div>
-                   );
-                 }
-               }
+    // console.log("Current",currCategory )
+    // console.log("Previous",prevCategory )
+    // console.log("----------------------------")
+    // console.log("Current State:", this.state.news);
+    // console.log("Previous State:", prevState.news);
+    // if (this.state.didMount === false && this.state.didUpdate === false) {
+    newsApi
+      .get(
+        `top-headlines?country=GB&category=${currCategory}&pageSize=12&apiKey=0a32e98f7f8a48a5a35b410b6339daab`
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          if (!isEqual(this.state.news, response.data.articles)) {
+            // console.log("Second Result is same");
+            this.setState({ news: response.data.articles, callNewsApi: false, didUpdate: true });
+          }
+        }
+      })
+      .catch((error) => console.log(error));
+    // }
+  };
+
+  render() {
+    // console.log(this.props)
+
+    return (
+      <div>
+        <News news={this.state.news} />
+      </div>
+    );
+  }
+}
